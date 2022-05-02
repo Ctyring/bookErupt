@@ -36,7 +36,7 @@ public class Book {
     @EruptField(
             views = @View(title = "图片"),
             edit = @Edit(title = "图片", type = EditType.ATTACHMENT,
-                    attachmentType = @AttachmentType(type = AttachmentType.Type.IMAGE, maxLimit = 3))
+                    attachmentType = @AttachmentType(type = AttachmentType.Type.IMAGE, maxLimit = 1))
     )
     private String picture;
 
