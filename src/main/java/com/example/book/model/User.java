@@ -80,7 +80,7 @@ public class User {
                             fetchHandlerParams = {"select id, ch_name from role", "5000"}
                     ))
     )
-    private String category;
+    private String role;
 
     @EruptField(
             views = @View(title = "生日"),
