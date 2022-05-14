@@ -6,10 +6,7 @@ import xyz.erupt.annotation.EruptField;
 import xyz.erupt.annotation.sub_field.Edit;
 import xyz.erupt.annotation.sub_field.EditType;
 import xyz.erupt.annotation.sub_field.View;
-import xyz.erupt.annotation.sub_field.sub_edit.AttachmentType;
-import xyz.erupt.annotation.sub_field.sub_edit.ChoiceType;
-import xyz.erupt.annotation.sub_field.sub_edit.InputType;
-import xyz.erupt.annotation.sub_field.sub_edit.Search;
+import xyz.erupt.annotation.sub_field.sub_edit.*;
 import xyz.erupt.toolkit.handler.SqlChoiceFetchHandler;
 
 import javax.persistence.*;
@@ -88,4 +85,24 @@ public class Book {
                     ))
     )
     private String press;
+
+    @EruptField(
+            views = @View(title = "在售卖"),
+            edit = @Edit(
+                    title = "在售卖",
+                    boolType = @BoolType(trueText = "是", falseText = "否"),
+                    search = @Search
+            )
+    )
+    private Boolean isSale = false;
+
+    @EruptField(
+            views = @View(title = "在收购"),
+            edit = @Edit(
+                    title = "在收购",
+                    boolType = @BoolType(trueText = "是", falseText = "否"),
+                    search = @Search
+            )
+    )
+    private Boolean isPurchase = false;
 }
