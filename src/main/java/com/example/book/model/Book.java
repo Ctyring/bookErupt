@@ -38,10 +38,16 @@ public class Book {
     private String picture;
 
     @EruptField(
-            views = @View(title = "价格", sortable = true),
-            edit = @Edit(title = "价格", search = @Search(vague = true), notNull = true)
+            views = @View(title = "收书价格", sortable = true),
+            edit = @Edit(title = "收书价格", search = @Search(vague = true), notNull = true)
     )
-    private Float price;
+    private Float purchasePrice;
+
+    @EruptField(
+            views = @View(title = "卖书价格", sortable = true),
+            edit = @Edit(title = "卖书价格", search = @Search(vague = true), notNull = true)
+    )
+    private Float salePrice;
 
     @EruptField(
             views = @View(title = "库存", sortable = true),
