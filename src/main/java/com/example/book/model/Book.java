@@ -53,7 +53,7 @@ public class Book {
             views = @View(title = "库存", sortable = true),
             edit = @Edit(title = "库存", search = @Search(vague = true), notNull = true)
     )
-    private Integer inventory;
+    private Integer inventory = 0;
 
     @Lob
     @EruptField(

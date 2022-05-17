@@ -4,7 +4,7 @@ window.eruptSiteConfig = {
     //附件地址，一般情况下不需要指定，如果自定义对象存储空间，则需在此指定附件资源访问地址
     fileDomain: "",
     //标题
-    title: "智联之星 后台管理系统",
+    title: "小鸭收书 后台管理系统",
     //描述
     desc: "",
     //是否展示版权信息
@@ -14,7 +14,7 @@ window.eruptSiteConfig = {
     //logo路径
     logoPath: "../favicon.ico",
     //logo文字
-    logoText: "智联之星",
+    logoText: "小鸭收书",
     //注册页地址(仅是一个链接，需要自定义实际样式)
     registerPage: "",
     // //自定义导航栏按钮，配置后将会出现在页面右上角
