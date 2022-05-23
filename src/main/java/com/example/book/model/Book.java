@@ -65,6 +65,7 @@ public class Book {
     @EruptField(
             views = @View(title = "分类"),
             edit = @Edit(
+                    notNull = true,
                     search = @Search,
                     title = "分类",
                     type = EditType.CHOICE,
@@ -80,6 +81,7 @@ public class Book {
     @EruptField(
             views = @View(title = "出版社"),
             edit = @Edit(
+                    notNull = true,
                     search = @Search,
                     title = "出版社",
                     type = EditType.CHOICE,
