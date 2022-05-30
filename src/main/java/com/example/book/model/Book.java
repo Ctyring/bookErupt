@@ -30,6 +30,13 @@ public class Book {
     )
     private String name;
 
+    //文本输入
+    @EruptField(
+            views = @View(title = "版本"),
+            edit = @Edit(title = "版本", notNull = true, inputType = @InputType, search = @Search(vague = true))
+    )
+    private String version;
+
     @EruptField(
             views = @View(title = "图片"),
             edit = @Edit(title = "图片", type = EditType.ATTACHMENT,
@@ -61,6 +68,38 @@ public class Book {
             edit = @Edit(title = "介绍", type = EditType.TEXTAREA)
     )
     private String des;
+
+    @EruptField(
+            views = @View(title = "破损情况"),
+            edit = @Edit(
+                    notNull = true,
+                    search = @Search,
+                    title = "破损情况",
+                    type = EditType.CHOICE,
+                    choiceType = @ChoiceType(
+                            fetchHandler = SqlChoiceFetchHandler.class,
+                            //参数一必填，表示sql语句
+                            //参数二可不填，表示缓存时间，默认为3000毫秒，1.6.10及以上版本支持
+                            fetchHandlerParams = {"select id, name from book_condition", "5000"}
+                    ))
+    )
+    private String condition;
+
+    @EruptField(
+            views = @View(title = "作者"),
+            edit = @Edit(
+                    notNull = true,
+                    search = @Search,
+                    title = "作者",
+                    type = EditType.CHOICE,
+                    choiceType = @ChoiceType(
+                            fetchHandler = SqlChoiceFetchHandler.class,
+                            //参数一必填，表示sql语句
+                            //参数二可不填，表示缓存时间，默认为3000毫秒，1.6.10及以上版本支持
+                            fetchHandlerParams = {"select id, name from author", "5000"}
+                    ))
+    )
+    private String author;
 
     @EruptField(
             views = @View(title = "分类"),
