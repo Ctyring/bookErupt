@@ -21,7 +21,7 @@ public class Book {
             views = @View(title = "ISBN"),
             edit = @Edit(title = "ISBN", notNull = true, inputType = @InputType, search = @Search(vague = true))
     )
-    private long ISBN;
+    private String ISBN;
 
     //文本输入
     @EruptField(
@@ -83,7 +83,7 @@ public class Book {
                             fetchHandlerParams = {"select id, name from book_condition", "5000"}
                     ))
     )
-    private String condition;
+    private String bookCondition;
 
     @EruptField(
             views = @View(title = "作者"),

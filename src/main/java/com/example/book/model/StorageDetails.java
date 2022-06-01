@@ -20,7 +20,7 @@ public class StorageDetails extends BaseModel{
             views = @View(title = "ISBN"),
             edit = @Edit(title = "ISBN", notNull = true, inputType = @InputType, search = @Search(vague = true))
     )
-    private long ISBN;
+    private String ISBN;
 
     @EruptField(
             views = @View(title = "书籍名"),
