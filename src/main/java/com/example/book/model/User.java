@@ -10,6 +10,7 @@ import xyz.erupt.annotation.sub_field.sub_edit.*;
 import xyz.erupt.toolkit.handler.SqlChoiceFetchHandler;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Table(name = "user")
 @Erupt(name = "User")
@@ -24,8 +25,8 @@ public class User {
     private Long id;
 
     @EruptField(
-            views = @View(title = "用户名"),
-            edit = @Edit(title = "用户名", notNull = true, inputType = @InputType, search = @Search(vague = true))
+            views = @View(title = "真实姓名"),
+            edit = @Edit(title = "真实姓名", notNull = true, inputType = @InputType, search = @Search(vague = true))
     )
     private String name;
 
@@ -67,6 +68,18 @@ public class User {
     private int status;
 
     @EruptField(
+            views = @View(title = "是否注销"),
+            edit = @Edit(title = "是否注销", type = EditType.CHOICE,
+                    choiceType = @ChoiceType(
+                            vl = {
+                                    @VL(label = "未注销", value = "0"),
+                                    @VL(label = "已注销", value = "1"),
+                            }
+                    ))
+    )
+    private int delFlag;
+
+    @EruptField(
             views = @View(title = "角色"),
             edit = @Edit(
                     notNull = true,
@@ -80,7 +93,7 @@ public class User {
                             fetchHandlerParams = {"select id, ch_name from role", "5000"}
                     ))
     )
-    private String role;
+    private Long role;
 
     @EruptField(
             views = @View(title = "生日"),
@@ -93,4 +106,32 @@ public class User {
             edit = @Edit(title = "用户简介", type = EditType.TEXTAREA)
     )
     private String des;
+
+    @EruptField(
+            views = @View(title = "openid")
+    )
+    private String openid;
+
+    @EruptField(
+            views = @View(title = "邮箱"),
+            edit = @Edit(title = "邮箱", notNull = true, inputType = @InputType, search = @Search(vague = true))
+    )
+    private String email;
+
+    @EruptField(
+            views = @View(title = "盐")
+    )
+    private String salt;
+
+    @EruptField(
+            views = @View(title = "用户名"),
+            edit = @Edit(title = "用户名", notNull = true, inputType = @InputType, search = @Search(vague = true))
+    )
+    private String username;
+
+    @EruptField(
+            views = @View(title = "创建时间"),
+            edit = @Edit(title = "创建时间", type = EditType.DATE, dateType = @DateType(pickerMode = DateType.PickerMode.HISTORY))
+    )
+    private Date createTime;
 }
