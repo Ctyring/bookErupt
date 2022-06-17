@@ -18,8 +18,8 @@ erupt:
 spring:
   servlet:
     multipart:
-      max-file-size: 10MB  #单个数据大小
-      max-request-size: 100MB #总数据大小
+      max-file-size: -1  #单个数据大小
+      max-request-size: -1 #总数据大小
   datasource:
 #    url: jdbc:mysql://localhost:3306/erupt?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
 #    username: erupt
