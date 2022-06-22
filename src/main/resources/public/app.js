@@ -10,7 +10,7 @@ window.eruptSiteConfig = {
     //是否展示版权信息
     copyright: false,
     //高德地图api key,使用地图组件须指定此属性，amapKey获取地址：https://lbs.amap.com (服务平台为：Web端(JS API))
-    amapKey: "6ba79a8d",
+    amapKey: "6627cebc3ec120bf3a16d6875fd4860b",
     //logo路径
     logoPath: "../favicon.ico",
     //logo文字
@@ -35,7 +35,9 @@ window.eruptSiteConfig = {
 
     }
 };
-
+window._AMapSecurityConfig = {
+    securityJsCode:'346f9b81765434672ade63d15dc101d7',
+}
 //路由回调函数
 window.eruptRouterEvent = {
     //key表示要监听的路由切换地址，为url hash地址最后一段

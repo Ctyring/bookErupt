@@ -1,71 +1,44 @@
 package com.example.book.model;
 
-import org.hibernate.annotations.GenericGenerator;
 import xyz.erupt.annotation.Erupt;
 import xyz.erupt.annotation.EruptField;
 import xyz.erupt.annotation.sub_field.Edit;
 import xyz.erupt.annotation.sub_field.EditType;
 import xyz.erupt.annotation.sub_field.View;
-import xyz.erupt.annotation.sub_field.sub_edit.*;
+import xyz.erupt.annotation.sub_field.sub_edit.AttachmentType;
+import xyz.erupt.annotation.sub_field.sub_edit.ChoiceType;
+import xyz.erupt.annotation.sub_field.sub_edit.InputType;
+import xyz.erupt.annotation.sub_field.sub_edit.Search;
+import xyz.erupt.jpa.model.BaseModel;
 import xyz.erupt.toolkit.handler.SqlChoiceFetchHandler;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Lob;
+import javax.persistence.Table;
 
-@Table(name = "book")
-@Erupt(name = "Book")
+/**
+ * @author cty
+ * @date 2022/6/22
+ */
 @Entity
-public class Book {
-
-    @Id
-    @GeneratedValue(generator = "generator")
-    @GenericGenerator(name = "generator", strategy = "native")
-    @Column(name = "id")
-    @EruptField
-    private Long id;
-
-    //文本输入
+@Table(name = "deliveryDetails")
+@Erupt(name = "DeliveryDetails")
+public class DeliveryDetails extends BaseModel {
     @EruptField(
             views = @View(title = "ISBN"),
             edit = @Edit(title = "ISBN", notNull = true, inputType = @InputType, search = @Search(vague = true))
     )
     private String ISBN;
 
-    //文本输入
     @EruptField(
             views = @View(title = "书籍名"),
             edit = @Edit(title = "书籍名", notNull = true, inputType = @InputType, search = @Search(vague = true))
     )
     private String name;
 
-    //文本输入
     @EruptField(
-            views = @View(title = "版本"),
-            edit = @Edit(title = "版本", notNull = true, inputType = @InputType, search = @Search(vague = true))
-    )
-    private String version;
-
-    @EruptField(
-            views = @View(title = "图片"),
-            edit = @Edit(title = "图片", type = EditType.ATTACHMENT,
-                    attachmentType = @AttachmentType(type = AttachmentType.Type.IMAGE, maxLimit = 1, size = 10240))
-    )
-    private String picture;
-
-    @EruptField(
-            views = @View(title = "收书价格", sortable = true),
-            edit = @Edit(title = "收书价格", search = @Search(vague = true), notNull = true)
-    )
-    private Float purchasePrice;
-
-    @EruptField(
-            views = @View(title = "卖书价格", sortable = true),
-            edit = @Edit(title = "卖书价格", search = @Search(vague = true), notNull = true)
-    )
-    private Float salePrice;
-
-    @EruptField(
-            views = @View(title = "库存", sortable = true),
-            edit = @Edit(title = "库存", search = @Search(vague = true), notNull = true)
+            views = @View(title = "数量", sortable = true),
+            edit = @Edit(title = "数量", search = @Search(vague = true), notNull = true)
     )
     private Integer inventory = 0;
 
@@ -140,23 +113,17 @@ public class Book {
     )
     private String press;
 
+    //文本输入
     @EruptField(
-            views = @View(title = "在售卖"),
-            edit = @Edit(
-                    title = "在售卖",
-                    boolType = @BoolType(trueText = "是", falseText = "否"),
-                    search = @Search
-            )
+            views = @View(title = "版本"),
+            edit = @Edit(title = "版本", notNull = true, inputType = @InputType, search = @Search(vague = true))
     )
-    private Boolean isSale = false;
+    private String version;
 
     @EruptField(
-            views = @View(title = "在收购"),
-            edit = @Edit(
-                    title = "在收购",
-                    boolType = @BoolType(trueText = "是", falseText = "否"),
-                    search = @Search
-            )
+            views = @View(title = "图片"),
+            edit = @Edit(title = "图片", type = EditType.ATTACHMENT,
+                    attachmentType = @AttachmentType(type = AttachmentType.Type.IMAGE, maxLimit = 1, size = 10240))
     )
-    private Boolean isPurchase = false;
+    private String picture;
 }

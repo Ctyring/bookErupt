@@ -3,6 +3,7 @@ package com.example.book.model;
 import org.hibernate.annotations.GenericGenerator;
 import xyz.erupt.annotation.Erupt;
 import xyz.erupt.annotation.EruptField;
+import xyz.erupt.annotation.sub_erupt.Power;
 import xyz.erupt.annotation.sub_field.Edit;
 import xyz.erupt.annotation.sub_field.EditType;
 import xyz.erupt.annotation.sub_field.View;
@@ -11,9 +12,10 @@ import xyz.erupt.toolkit.handler.SqlChoiceFetchHandler;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Table(name = "user")
-@Erupt(name = "User")
+@Erupt(name = "User", power = @Power(importable = true, export = true))
 @Entity
 public class User {
     @Id
@@ -53,7 +55,7 @@ public class User {
                             }
                     ))
     )
-    private int gender;
+    private int gender = 0;
 
     @EruptField(
             views = @View(title = "状态"),
@@ -65,7 +67,7 @@ public class User {
                             }
                     ))
     )
-    private int status;
+    private int status = 0;
 
     @EruptField(
             views = @View(title = "是否注销"),
@@ -77,7 +79,7 @@ public class User {
                             }
                     ))
     )
-    private int delFlag;
+    private int delFlag = 0;
 
     @EruptField(
             views = @View(title = "角色"),
@@ -134,4 +136,13 @@ public class User {
             edit = @Edit(title = "创建时间", type = EditType.DATE, dateType = @DateType(pickerMode = DateType.PickerMode.HISTORY))
     )
     private Date createTime;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "user_id")
+    @OrderBy
+    @EruptField(
+            edit = @Edit(title = "地址列表", type = EditType.TAB_TABLE_ADD),
+            views = @View(title = "地址列表")
+    )
+    private Set<Address> addressList;
 }

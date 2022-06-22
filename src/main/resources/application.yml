@@ -43,4 +43,4 @@ spring:
       mail.smtp.ssl.enable: true
       mail.smtp.ssl.required: true
 server:
-  port: 9999
+  port: 10001
