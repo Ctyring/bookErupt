@@ -21,9 +21,9 @@ import javax.persistence.Table;
  * @date 2022/6/22
  */
 @Entity
-@Table(name = "order_details")
-@Erupt(name = "OrderDetails")
-public class OrderDetails extends BaseModel {
+@Table(name = "user_books_details")
+@Erupt(name = "UserBooksDetails")
+public class UserBooksDetails extends BaseModel {
     @EruptField(
             views = @View(title = "ISBN"),
             edit = @Edit(title = "ISBN", notNull = true, inputType = @InputType, search = @Search(vague = true))
@@ -37,8 +37,8 @@ public class OrderDetails extends BaseModel {
     private String name;
 
     @EruptField(
-            views = @View(title = "入库数量", sortable = true),
-            edit = @Edit(title = "入库数量", search = @Search(vague = true), notNull = true)
+            views = @View(title = "数量", sortable = true),
+            edit = @Edit(title = "数量", search = @Search(vague = true), notNull = true)
     )
     private Integer inventory = 0;
 
@@ -128,8 +128,8 @@ public class OrderDetails extends BaseModel {
     private String picture;
 
     @EruptField(
-            views = @View(title = "卖书单价", sortable = true),
-            edit = @Edit(title = "卖书单价", search = @Search(vague = true), notNull = true)
+            views = @View(title = "单价", sortable = true),
+            edit = @Edit(title = "单价", search = @Search(vague = true), notNull = true)
     )
     private Float purchasePrice;
 
@@ -138,4 +138,6 @@ public class OrderDetails extends BaseModel {
             edit = @Edit(title = "合计", search = @Search(vague = true), notNull = true)
     )
     private Float countPrice;
+
+
 }

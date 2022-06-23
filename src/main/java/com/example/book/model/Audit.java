@@ -1,29 +1,31 @@
 package com.example.book.model;
 
+import org.hibernate.annotations.GenericGenerator;
 import xyz.erupt.annotation.Erupt;
 import xyz.erupt.annotation.EruptField;
 import xyz.erupt.annotation.sub_field.Edit;
 import xyz.erupt.annotation.sub_field.EditType;
 import xyz.erupt.annotation.sub_field.View;
-import xyz.erupt.annotation.sub_field.sub_edit.AttachmentType;
-import xyz.erupt.annotation.sub_field.sub_edit.ChoiceType;
-import xyz.erupt.annotation.sub_field.sub_edit.InputType;
-import xyz.erupt.annotation.sub_field.sub_edit.Search;
-import xyz.erupt.jpa.model.BaseModel;
+import xyz.erupt.annotation.sub_field.sub_edit.*;
 import xyz.erupt.toolkit.handler.SqlChoiceFetchHandler;
 
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author cty
  * @date 2022/6/22
  */
+@Table(name = "audit")
+@Erupt(name = "Audit")
 @Entity
-@Table(name = "order_details")
-@Erupt(name = "OrderDetails")
-public class OrderDetails extends BaseModel {
+public class Audit {
+    @Id
+    @GeneratedValue(generator = "generator")
+    @GenericGenerator(name = "generator", strategy = "native")
+    @Column(name = "id")
+    @EruptField
+    private Long id;
+
     @EruptField(
             views = @View(title = "ISBN"),
             edit = @Edit(title = "ISBN", notNull = true, inputType = @InputType, search = @Search(vague = true))
@@ -35,12 +37,6 @@ public class OrderDetails extends BaseModel {
             edit = @Edit(title = "书籍名", notNull = true, inputType = @InputType, search = @Search(vague = true))
     )
     private String name;
-
-    @EruptField(
-            views = @View(title = "入库数量", sortable = true),
-            edit = @Edit(title = "入库数量", search = @Search(vague = true), notNull = true)
-    )
-    private Integer inventory = 0;
 
     @Lob
     @EruptField(
@@ -128,14 +124,14 @@ public class OrderDetails extends BaseModel {
     private String picture;
 
     @EruptField(
-            views = @View(title = "卖书单价", sortable = true),
-            edit = @Edit(title = "卖书单价", search = @Search(vague = true), notNull = true)
+            views = @View(title = "状态"),
+            edit = @Edit(title = "状态", type = EditType.CHOICE,
+                    choiceType = @ChoiceType(
+                            vl = {
+                                    @VL(label = "未审核", value = "0"),
+                                    @VL(label = "已审核", value = "1"),
+                            }
+                    ))
     )
-    private Float purchasePrice;
-
-    @EruptField(
-            views = @View(title = "合计", sortable = true),
-            edit = @Edit(title = "合计", search = @Search(vague = true), notNull = true)
-    )
-    private Float countPrice;
+    private int status = 0;
 }

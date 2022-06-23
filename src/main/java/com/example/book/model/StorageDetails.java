@@ -16,7 +16,7 @@ import xyz.erupt.toolkit.handler.SqlChoiceFetchHandler;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "storageDetails")
+@Table(name = "storage_details")
 @Erupt(name = "StorageDetails")
 public class StorageDetails extends BaseModel{
 

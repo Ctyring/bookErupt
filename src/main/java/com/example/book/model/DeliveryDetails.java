@@ -21,7 +21,7 @@ import javax.persistence.Table;
  * @date 2022/6/22
  */
 @Entity
-@Table(name = "deliveryDetails")
+@Table(name = "delivery_details")
 @Erupt(name = "DeliveryDetails")
 public class DeliveryDetails extends BaseModel {
     @EruptField(
