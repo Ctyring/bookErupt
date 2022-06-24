@@ -145,4 +145,13 @@ public class User {
             views = @View(title = "地址列表")
     )
     private Set<Address> addressList;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "user_id")
+    @OrderBy
+    @EruptField(
+            edit = @Edit(title = "词云列表", type = EditType.TAB_TABLE_ADD),
+            views = @View(title = "词云列表")
+    )
+    private Set<UserWord> wordList;
 }
