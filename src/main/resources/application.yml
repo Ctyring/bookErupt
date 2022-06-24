@@ -14,12 +14,13 @@ erupt:
   upms.expireTimeByLogin: 60
   # 是否记录操作日志，默认true，该功能开启后可在【系统管理 → 操作日志】中查看操作日志
   security.recordOperateLog: true
-  upload-path: E:\壁纸\Erupt
+  uploadPath: C:\迅雷下载
 spring:
   servlet:
     multipart:
-      max-file-size: -1  #单个数据大小
-      max-request-size: -1 #总数据大小
+      enabled: true #开启文件上传
+      max-file-size: 500MB  #单个数据大小
+      max-request-size: 500MB #总数据大小
   datasource:
 #    url: jdbc:mysql://localhost:3306/erupt?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
 #    username: erupt
@@ -33,6 +34,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     database: mysql
   profiles:
+
     active: dev
   mail:
     username: xxxx@qq.com
@@ -44,3 +46,9 @@ spring:
       mail.smtp.ssl.required: true
 server:
   port: 10001
+
+minio:
+  endpoint: http://localhost:9000 #Minio服务所在地址
+  bucketName: test #存储桶名称
+  accessKey: minioadmin #访问的key
+  secretKey: minioadmin #访问的秘钥
