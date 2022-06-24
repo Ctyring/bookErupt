@@ -28,7 +28,7 @@ public class User {
 
     @EruptField(
             views = @View(title = "真实姓名"),
-            edit = @Edit(title = "真实姓名", notNull = true, inputType = @InputType, search = @Search(vague = true))
+            edit = @Edit(title = "真实姓名", inputType = @InputType, search = @Search(vague = true))
     )
     private String name;
 
